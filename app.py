@@ -142,7 +142,7 @@ for idx, tab in enumerate(tabs):
             # Add year range filters for 'AllData' dataset or any dataset requiring year filtering
             if dataset_info["apply_year_filter"]:
                 # Get list of years from the dataset
-                year_columns = [col for col in df_full.columns if col.isdigit()]
+                year_columns = [str(col) for col in df_full.columns if str(col).isdigit()]
                 year_columns = sorted(year_columns, key=int)  # Sort years in ascending order
 
                 # Dropdown for Start Year
