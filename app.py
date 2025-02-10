@@ -108,6 +108,7 @@ for idx, tab in enumerate(tabs):
         
         # Load data preview (first 1000 rows only)
         file_path = dataset_info["file_path"]
+        st.write(file_path)
         df_preview = load_full_data(file_path)
 
         if df_preview is not None:
