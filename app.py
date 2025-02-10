@@ -37,7 +37,7 @@ def filter_data(df, filters):
 
 # Function to filter based on year range (specific to Dataset 1)
 def filter_by_year(df, filter_columns, start_year, end_year):
-    year_columns = [col for col in df.columns if col.isdigit()]
+    year_columns = [str(col) for col in df_full.columns if str(col).isdigit()]
     year_columns = sorted(year_columns, key=int)
     selected_years = [year for year in year_columns if start_year <= int(year) <= end_year]
     return df[filter_columns + selected_years]
