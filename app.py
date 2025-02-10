@@ -200,7 +200,7 @@ for idx, tab in enumerate(tabs):
                 )
 
                 # Identify year columns (assuming they are numeric)
-                year_columns = [str(col) for col in df_full.columns if str(col).isdigit()]
+                year_columns = [(col) for col in df_full.columns if str(col).isdigit()]
                 year_columns = sorted(year_columns, key=int)
 
                 if dataset_name=="IPCC" or dataset_name=="Cross-Sector Pathways":
@@ -235,7 +235,7 @@ for idx, tab in enumerate(tabs):
                                 markers=False)  # Add markers to check if points are plotted
                     
                     # Set chart height
-                    fig.update_layout(height=600)  # Adjust the height as needed (default is ~450)
+                    fig.update_layout(height=600, width=1200)  # Adjust the height as needed (default is ~450)
                     fig.update_traces(line=dict(color="black", width=4), selector=dict(name="Median"),)
 
                     st.plotly_chart(fig)      
@@ -269,7 +269,7 @@ for idx, tab in enumerate(tabs):
                     fig.update_traces(line=dict(color="black", width=4), selector=dict(name="Median - ALL"),)
 
                     # Set chart height
-                    fig.update_layout(height=600)  # Adjust the height as needed (default is ~450)
+                    fig.update_layout(height=600, width=1200)  # Adjust the height as needed (default is ~450)
                     # Display the plot in Streamlit
                     st.plotly_chart(fig)
 
