@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 @st.cache_data
 def load_data_preview(file_path):
     if file_path.endswith('.xlsx'):
-        df = pd.read_excel(file_path,nrows=100, engine="openpyxl")  # Only load a preview of 1000 rows
+        df = pd.read_excel(file_path,nrows=100,)  # Only load a preview of 1000 rows
     elif file_path.endswith('.csv'):
         df = pd.read_csv(file_path, encoding="utf-8", nrows=100)  # Only load a preview of 1000 rows
     else:
@@ -21,7 +21,7 @@ def load_data_preview(file_path):
 @st.cache_data
 def load_full_data(file_path):
     if file_path.endswith('.xlsx'):
-        df = pd.read_excel(file_path, engine="openpyxl")
+        df = pd.read_excel(file_path,)
     elif file_path.endswith('.csv'):
         df = pd.read_csv(file_path, encoding="utf-8")
     else:
@@ -37,7 +37,7 @@ def filter_data(df, filters):
 
 # Function to filter based on year range (specific to Dataset 1)
 def filter_by_year(df, filter_columns, start_year, end_year):
-    year_columns = [str(col) for col in df_full.columns if str(col).isdigit()]
+    year_columns = [(col) for col in df_full.columns if str(col).isdigit()]
     year_columns = sorted(year_columns, key=int)
     selected_years = [year for year in year_columns if start_year <= int(year) <= end_year]
     return df[filter_columns + selected_years]
@@ -66,7 +66,7 @@ tabs = st.tabs(["IPCC", "Cross-Sector Pathways", "Power-Sector", "Chemical", "Bu
 # File paths and filter columns for different datasets
 datasets_info = {
     "IPCC": {
-        "file_path": "C1-3_summary_2050_variable.xlsx",
+        "file_path": "C1-3_summary_2050_variable.csv",
         "filter_columns": ["Category", "Model", "Scenario", "Region", "Variable", "Unit"],
         "apply_year_filter": True
     },
@@ -108,7 +108,7 @@ for idx, tab in enumerate(tabs):
         
         # Load data preview (first 1000 rows only)
         file_path = dataset_info["file_path"]
-        st.write(file_path)
+    
         df_preview = load_data_preview(file_path)
 
         if df_preview is not None:
@@ -187,6 +187,7 @@ for idx, tab in enumerate(tabs):
 
                 # Identify year columns (assuming they are numeric)
                 year_columns = [str(col) for col in df_full.columns if str(col).isdigit()]
+                year_columns = sorted(year_columns, key=int)
 
                 if dataset_name=="IPCC" or dataset_name=="Cross-Sector Pathways":
                     st.write("### Visualizing Data")
