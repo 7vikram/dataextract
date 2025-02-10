@@ -66,7 +66,7 @@ tabs = st.tabs(["IPCC", "Cross-Sector Pathways", "Power-Sector", "Chemical", "Bu
 # File paths and filter columns for different datasets
 datasets_info = {
     "IPCC": {
-        "file_path": "C1-3_summary_2050_variable.csv",
+        "file_path": "C1-3_summary_2050_variable.xlsx",
         "filter_columns": ["Category", "Model", "Scenario", "Region", "Variable", "Unit"],
         "apply_year_filter": True
     },
