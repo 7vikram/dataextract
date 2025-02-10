@@ -10,9 +10,9 @@ st.set_page_config(layout="wide")
 @st.cache_data
 def load_data_preview(file_path):
     if file_path.endswith('.xlsx'):
-        df = pd.read_excel(file_path,)  # Only load a preview of 1000 rows
+        df = pd.read_excel(file_path,nrows=100)  # Only load a preview of 1000 rows
     elif file_path.endswith('.csv'):
-        df = pd.read_csv(file_path, encoding="utf-8")  # Only load a preview of 1000 rows
+        df = pd.read_csv(file_path, encoding="utf-8", nrows=100)  # Only load a preview of 1000 rows
     else:
         return None
     return df
@@ -23,7 +23,7 @@ def load_full_data(file_path):
     if file_path.endswith('.xlsx'):
         df = pd.read_excel(file_path)
     elif file_path.endswith('.csv'):
-        df = pd.read_csv(file_path)
+        df = pd.read_csv(file_path, encoding="utf-8")
     else:
         return None
     return df
@@ -71,7 +71,7 @@ datasets_info = {
         "apply_year_filter": True
     },
     "Cross-Sector Pathways": {
-        "file_path": "AllData.csv",
+        "file_path": "AllData.xlsx",
         "filter_columns": ["Model", "Scenario", "Region", "Variable","Unit"],
         
         "apply_year_filter": True
@@ -87,12 +87,12 @@ datasets_info = {
         "apply_year_filter": False
     },
     "Building": {
-        "file_path": "AllData2.csv",
+        "file_path": "AllData2.xlsx",
         "filter_columns": ["Model", "Scenario"],
         "apply_year_filter": False
     },
     "Industry": {
-        "file_path": "AllData3.csv",
+        "file_path": "AllData3.xlsx",
         "filter_columns": ["Model", "Scenario"],
         "apply_year_filter": False
     }
@@ -108,14 +108,15 @@ for idx, tab in enumerate(tabs):
         
         # Load data preview (first 1000 rows only)
         file_path = dataset_info["file_path"]
-        df_preview = load_data_preview(file_path)
+        st.write(file_path)
+        df_preview = load_full_data(file_path)
 
         if df_preview is not None:
             st.write("### Data Preview")
             st.dataframe(df_preview.head())
 
             # Load full data for filtering purposes (without limiting to preview rows)
-            df_full = load_full_data(file_path)
+            df_full = df_preview.copy()
 
             # Filtering UI based on the full data columns (not preview)
             st.write("### Filter Data")
