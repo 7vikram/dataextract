@@ -11,7 +11,7 @@ st.set_page_config(layout="wide")
 def load_data_preview(file_path):
     try:
         if file_path.endswith('.xlsx'):
-            df = pd.read_excel(file_path, nrows=100, engine='openpyxl',sheet_name='Sheet1')
+            df = pd.read_excel(file_path, nrows=100, engine='openpyxl',)
         elif file_path.endswith('.csv'):
             df = pd.read_csv(file_path, encoding="utf-8", nrows=100)
         else:
@@ -29,7 +29,7 @@ def load_data_preview(file_path):
 def load_full_data(file_path):
     try:
         if file_path.endswith('.xlsx'):
-            df = pd.read_excel(file_path, engine='openpyxl', sheet_name='Sheet1')
+            df = pd.read_excel(file_path, engine='openpyxl',)
         elif file_path.endswith('.csv'):
             df = pd.read_csv(file_path, encoding="utf-8")
         else:
@@ -86,7 +86,7 @@ datasets_info = {
     },
     "Cross-Sector Pathways": {
         "file_path": "AllData.xlsx",
-        "filter_columns": ["Model", "Scenario", "Region", "Variable","Unit"],
+        "filter_columns": ["Model", "Scenario", "Region", "Variable", "Unit"],
         
         "apply_year_filter": True
     },
@@ -217,21 +217,21 @@ for idx, tab in enumerate(tabs):
                                              value_vars=year_columns, 
                                             var_name="Year", value_name="Value")
                     
-                    df_melted = df_melted.groupby(['Variable','Year'])['Value'].median().reset_index()
+                    #df_melted = df_melted.groupby(['Variable','Year'])['Value'].median().reset_index()
                     # Convert Year column to integer
                     df_melted["Year"] = pd.to_numeric(df_melted["Year"], errors='coerce')
                     df_melted["Value"] = pd.to_numeric(df_melted["Value"], errors='coerce')
 
                     median_values = df_melted.groupby('Year')['Value'].median().reset_index()
-                    median_values['Variable'] = 'Median'
+                    median_values['Scenario'] = 'Median'
 
                     # Combine the original data with the median data
                     df_combined = pd.concat([df_melted, median_values])
                    
                     # Plotly line chart with multiple lines for different models
-                    fig = px.line(df_combined, x="Year", y="Value", color="Variable",
+                    fig = px.line(df_combined, x="Year", y="Value", color="Scenario",
                                 title="Trend Comparison of Selected Models",
-                                labels={"Value": "Metric Value", "Year": "Year", "Variable": "Variable"},
+                                labels={"Value": "Metric Value", "Year": "Year", "Scenario": "Scenario"},
                                 markers=False)  # Add markers to check if points are plotted
                     
                     # Set chart height
