@@ -85,7 +85,7 @@ datasets_info = {
         "apply_year_filter": True
     },
     "Cross-Sector Pathways": {
-        "file_path": "AllData.csv",
+        "file_path": "Alldata.csv",
         "filter_columns": ["Model", "Scenario", "Region", "Variable", "Unit"],
         
         "apply_year_filter": True
@@ -101,12 +101,12 @@ datasets_info = {
         "apply_year_filter": False
     },
     "Building": {
-        "file_path": "AllData2.xlsx",
+        "file_path": "Alldata2.xlsx",
         "filter_columns": ["Model", "Scenario"],
         "apply_year_filter": False
     },
     "Industry": {
-        "file_path": "AllData3.xlsx",
+        "file_path": "Alldata3.xlsx",
         "filter_columns": ["Model", "Scenario"],
         "apply_year_filter": False
     }
