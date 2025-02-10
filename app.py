@@ -115,7 +115,7 @@ for idx, tab in enumerate(tabs):
             st.dataframe(df_preview.head())
 
             # Load full data for filtering purposes (without limiting to preview rows)
-            df_full = load_full_data(file_path)
+            df_full = df_preview.copy()
 
             # Filtering UI based on the full data columns (not preview)
             st.write("### Filter Data")
