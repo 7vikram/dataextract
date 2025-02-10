@@ -85,7 +85,7 @@ datasets_info = {
         "apply_year_filter": True
     },
     "Cross-Sector Pathways": {
-        "file_path": "Alldata.csv",
+        "file_path": "Alldata.xlsx",
         "filter_columns": ["Model", "Scenario", "Region", "Variable", "Unit"],
         
         "apply_year_filter": True
