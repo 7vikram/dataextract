@@ -11,7 +11,7 @@ st.set_page_config(layout="wide")
 def load_data_preview(file_path):
     try:
         if file_path.endswith('.xlsx'):
-            df = pd.read_excel(file_path, nrows=100, engine='openpyxl')
+            df = pd.read_excel(file_path, nrows=100, engine='openpyxl',sheet_name='Sheet1')
         elif file_path.endswith('.csv'):
             df = pd.read_csv(file_path, encoding="utf-8", nrows=100)
         else:
@@ -29,7 +29,7 @@ def load_data_preview(file_path):
 def load_full_data(file_path):
     try:
         if file_path.endswith('.xlsx'):
-            df = pd.read_excel(file_path, engine='openpyxl')
+            df = pd.read_excel(file_path, engine='openpyxl', sheet_name='Sheet1')
         elif file_path.endswith('.csv'):
             df = pd.read_csv(file_path, encoding="utf-8")
         else:
@@ -80,7 +80,7 @@ tabs = st.tabs(["IPCC", "Cross-Sector Pathways", "Power-Sector", "Chemical", "Bu
 # File paths and filter columns for different datasets
 datasets_info = {
     "IPCC": {
-        "file_path": "C1-3_summary_2050_variable.xlsx",
+        "file_path": "C1-3_summary_2050_variable.csv",
         "filter_columns": ["Category", "Model", "Scenario", "Region", "Variable", "Unit"],
         "apply_year_filter": True
     },
