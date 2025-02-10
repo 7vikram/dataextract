@@ -8,7 +8,7 @@ st.set_page_config(layout="wide")
 
 # Function to load data for preview (only first 1000 rows to avoid huge data loads)
 @st.cache_data
-def load_data_preview(file_path):
+def load_full_data(file_path):
     if file_path.endswith('.xlsx'):
         df = pd.read_excel(file_path,)  # Only load a preview of 1000 rows
     elif file_path.endswith('.csv'):
