@@ -4,3 +4,5 @@ streamlit==1.39.0
 openpyxl
 pyxlsb
 XlsxWriter==3.2.0
+polars
+fastexcel
