@@ -17,16 +17,6 @@ def load_data_preview(file_path):
         return None
     return df
 
-# Function to load full data (for applying filters)
-@st.cache_data
-def load_full_data(file_path):
-    if file_path.endswith('.xlsx'):
-        df = pd.read_excel(file_path)
-    elif file_path.endswith('.csv'):
-        df = pd.read_csv(file_path)
-    else:
-        return None
-    return df
 
 # Function to filter data
 def filter_data(df, filters):
