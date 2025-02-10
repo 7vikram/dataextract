@@ -3,30 +3,44 @@ import pandas as pd
 from io import BytesIO
 import plotly.express as px
 
-# Set page config to full screen
+# Set Streamlit page to wide layout
 st.set_page_config(layout="wide")
 
-# Function to load data for preview (only first 1000 rows to avoid huge data loads)
+# Function to load data preview (first 100 rows)
 @st.cache_data
 def load_data_preview(file_path):
-    if file_path.endswith('.xlsx'):
-        df = pd.read_excel(file_path,nrows=100, engine='openpyxl')  # Only load a preview of 1000 rows
-    elif file_path.endswith('.csv'):
-        df = pd.read_csv(file_path, encoding="utf-8", nrows=100)  # Only load a preview of 1000 rows
-    else:
+    try:
+        if file_path.endswith('.xlsx'):
+            df = pd.read_excel(file_path, nrows=100, engine='openpyxl')
+        elif file_path.endswith('.csv'):
+            df = pd.read_csv(file_path, encoding="utf-8", nrows=100)
+        else:
+            return None
+        return df
+    except FileNotFoundError:
+        st.warning(f"File not found: {file_path}. Upload it below if missing.")
         return None
-    return df
+    except Exception as e:
+        st.error(f"Error loading file: {str(e)}")
+        return None
 
-# Function to load full data (for applying filters)
+# Function to load full dataset
 @st.cache_data
 def load_full_data(file_path):
-    if file_path.endswith('.xlsx'):
-        df = pd.read_excel(file_path, engine='openpyxl')
-    elif file_path.endswith('.csv'):
-        df = pd.read_csv(file_path, encoding="utf-8")
-    else:
+    try:
+        if file_path.endswith('.xlsx'):
+            df = pd.read_excel(file_path, engine='openpyxl')
+        elif file_path.endswith('.csv'):
+            df = pd.read_csv(file_path, encoding="utf-8")
+        else:
+            return None
+        return df
+    except FileNotFoundError:
+        st.warning(f"File not found: {file_path}. Upload it below if missing.")
         return None
-    return df
+    except Exception as e:
+        st.error(f"Error loading file: {str(e)}")
+        return None
 
 # Function to filter data
 def filter_data(df, filters):
