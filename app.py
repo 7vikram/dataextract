@@ -70,9 +70,9 @@ col1, col2 = st.columns([1, 5])
 with col1:
     st.image("SBT_Logo.jpg", width=100)
 with col2:
-    st.title("Data Explorer")
+    st.title("Pathway Explorer")
 
-st.write("Here you can find all the raw data that is used in the other modules across the site. Filter the data using the picklists at the top and download data for that module or the whole site for your own analysis.")
+st.write("Here you can find all the raw data, eligible scenarios and pathways that informs the cross sector and sector-specific standards in the SBTi")
 
 # Define tabs for multiple data sources
 tabs = st.tabs(["Document", "IPCC", "Cross-Sector Pathways", "Power-Sector", "Chemical", "Building", "Industry"])
@@ -97,7 +97,7 @@ datasets_info = {
     },
     "Power-Sector": {
         "file_path": "Pathway Database - Updated 2024-205.xlsx",
-        "filter_columns": ["Metric","Model", "Scenario", "Unit", "scen_id"],
+        "filter_columns": ["Metric","Model", "Scenario", "Unit"],
         "apply_year_filter": False
     },
     "Chemical": {
@@ -138,7 +138,7 @@ for idx, tab in enumerate(tabs):
                 st.session_state["selected_var"] = None
 
             st.title("Eligible SBTi Scenarios")
-            st.write("These are the eligible Models 7 Scenarios for pathway development in cross-sector and sector-specific standards")
+            st.write("These are the eligible Scenarios that pass the principled-driven criteria used in cross-sector and sector-specific pathways")
             # Layout: Left (buttons) | Right (data)
             col1, col2 = st.columns([1, 5])
 
@@ -282,7 +282,7 @@ for idx, tab in enumerate(tabs):
                         df_combined = df_combined[df_combined['Value']!=0]
                         # Plotly line chart with multiple lines for different models
                         fig = px.line(df_combined, x="Year", y="Value", color="Scenario",
-                                    title="Trend Comparison of Selected Models",
+                                    #title="Trend Comparison of Selected Models",
                                     labels={"Value": "Metric Value", "Year": "Year", "Scenario": "Scenario"},
                                     markers=False)  # Add markers to check if points are plotted
                         
