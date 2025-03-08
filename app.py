@@ -1124,7 +1124,6 @@ elif st.session_state["page"] == "Document":
         if st.session_state.pdf_ref:
             pdf_viewer(input=st.session_state.pdf_ref, width="100%")
             # Download Button
-            st.download_button(label="📥 Download PDF", 
-                            data=ss.pdf_ref, 
-                            file_name="sample.pdf", 
-                            mime="application/pdf")
+            #st.download_button(label="📥 Download PDF", 
+             #               data=ss.pdf_ref, 
+              ##             mime="application/pdf")
