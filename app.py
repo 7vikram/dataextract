@@ -1110,7 +1110,7 @@ elif st.session_state["page"] == "Document":
         st.title("PDF Viewer")
 
         # Local file path (Replace this with your actual path)
-        pdf_path = r"documents\sample.pdf"
+        pdf_path = r"sample.pdf"
 
 
         if os.path.exists(pdf_path):
@@ -1124,6 +1124,7 @@ elif st.session_state["page"] == "Document":
         if st.session_state.pdf_ref:
             pdf_viewer(input=st.session_state.pdf_ref, width="100%")
             # Download Button
-            #st.download_button(label="📥 Download PDF", 
-             #               data=ss.pdf_ref, 
-              ##             mime="application/pdf")
+            st.download_button(label="📥 Download PDF", 
+                            data=ss.pdf_ref, 
+                            file_name="sample.pdf", 
+                            mime="application/pdf")
