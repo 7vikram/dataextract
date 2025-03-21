@@ -37,7 +37,7 @@ pages = {
         "file": "power_generation",
         "column": 1,  # First column
         "pathway": "IEA NZE, IPCC",
-        "metrics": ["tCO2e", "tCO2/MWh - % Zero Carbon Capacity"],
+        "metrics": ["tCO2e", "tCO2/MWh", "% Zero Carbon Capacity"],
         "color": "#6FA8DC",  # Green
     },
     "Other Industries": {
@@ -58,7 +58,7 @@ pages = {
         "file": "oil_gas",
         "column": 1,
         "pathway": "IPCC",
-        "metrics": ["tCO2e", "tCO2/v.km -% ZEV produced"],
+        "metrics": ["tCO2e", "tCO2e/boe"],
         "color": "#6FA8DC",  # Purple
     },
     "Rail": {
@@ -72,14 +72,14 @@ pages = {
         "file": "aluminum_production",
         "column": 3,  
         "pathway": "IEA NZE 2021",
-        "metrics": ["tCO2e", "tCO2/tonne.km"],
+        "metrics": ["tCO2e", "tCO2/tonne"],
         "color": "#D77932",  # Grey Blue
     },
     "Residential": {
         "file": "residential",
         "column": 1,  
         "pathway": "CREEM",
-        "metrics": ["tCO2e", "tCO2/tonne.km"],
+        "metrics": ["tCO2e", "tCO2/m2"],
         "color": "#D77932",  # Purple
     },
     "Road": {
@@ -93,14 +93,14 @@ pages = {
         "file": "cement",
         "column": 3,  
         "pathway": "IEA NZE 2021",
-        "metrics": ["tCO2e", "tCO2/tonne.km"],
+        "metrics": ["tCO2e", "tCO2/tonne"],
         "color": "#D77932",  # Grey Blue
     },
     "Commercial": {
         "file": "commercial",
         "column": 1,  # Third column
         "pathway": "CREEM",
-        "metrics": ["tCO2e", "tCO2/tonne.km"],
+        "metrics": ["tCO2e", "tCO2/m2"],
         "color": "#D77932",  # Pink
     },
     "Aviation": {
@@ -114,14 +114,21 @@ pages = {
         "file": "steel",
         "column": 3,  # Third column
         "pathway": "IEA NZE",
-        "metrics": ["tCO2e", "tCO2/tonne.km"],
+        "metrics": ["tCO2e", "tCO2/tonne"],
         "color": "#D77932",  # Pink
     },
     "Chemical": {
         "file": "chemical",
         "column": 1,  # Third column
         "pathway": "IEA NZE",
-        "metrics": ["tCO2e", "tCO2/tonne.km"],
+        "metrics": ["tCO2e", "tCO2/tonne"],
+        "color": "#D77932",  # Pink
+    },
+     "FLAG ": {
+        "file": "FLAG",
+        "column": 2,  # Third column
+        "pathway": "IPCC",
+        "metrics": ["tCO2e", "tCO2/m3","tCO2/freshweight"],
         "color": "#D77932",  # Pink
     },
     "Apperal & Footwear": {
